@@ -1,6 +1,7 @@
 package us.devoxx.dev.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,6 +23,8 @@ public class AppUserService implements UserDetailsService {
         }
 
         var user =  userOptional.get();
-        return new MyUserDaitls(user);
+        var result  =  new MyUserDaitls(user);
+        System.out.println(result.getUsername()  +"  " + result.getAuthorities());
+        return result;
     }
 }
